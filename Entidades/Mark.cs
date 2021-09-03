@@ -2,7 +2,7 @@
 
 namespace RentCars
 {
-        public enum Mark
+    public enum Mark
         {
             Fiat, Ford, Chevrolet, Peugeot, Renault, Volkswagen
         }

@@ -10,10 +10,7 @@ namespace RentCars
 {
     public class CarCRUD
     {
-        
-
         public List<Car> cars;
-
         private static string BDcar = ConfigurationManager.AppSettings["BDCar"];
 
         public static Car Create(Car _car)
@@ -25,11 +22,8 @@ namespace RentCars
             }
             else{
                 Car lastCar = GetALL().Last();
-                _car.Id = lastCar.Id + 1;
+                _car.Id = lastCar.Id + 1; //El metodo Last() devuelve el ultimo elemento
             }
-            
-                                           
-
             bd.Insert(_car);
             return _car;
         }
@@ -44,22 +38,19 @@ namespace RentCars
         public static Car GetById(int id) {
 
             foreach (Car car in GetALL()) {
-
                 if (car.Id == id) {
                     return car;
                 }
             
             }
-
             return null;
         }
-
+        // Modifica
         public static void Update(Car _car) {
 
             List<Car> listCars = new List<Car>();
             foreach (Car car in GetALL())
             {
-
                 if (car.Id == _car.Id)
                 {
                     car.Mark = _car.Mark;
@@ -70,10 +61,7 @@ namespace RentCars
                 }
                 listCars.Add(car);
             }
-
-            saveList(listCars);
-
-
+            SaveList(listCars);
         }
         
         public static void Remove(int id) {
@@ -85,20 +73,15 @@ namespace RentCars
                 {
                     listCars.Add(car);
                 }
-
             }
-            saveList(listCars);
-
-
+            SaveList(listCars);
         }
 
-        public static void saveList(List<Car> listCars) {
+        public static void SaveList(List<Car> listCars) {
 
             AccessDB<Car> bd = new AccessDB<Car>(BDcar);
             bd.SaveList(listCars);
         }
-
-
     }
 }
 

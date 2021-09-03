@@ -6,5 +6,4 @@ namespace RentCars
         {
             black, white, red, yellow, green
         }
-
 }

@@ -1,1 +1,10 @@
-[{"Id":2,"Mark":0,"Model":"uno","NumberOfDoors":2,"Colour":4,"ChangeBook":true},{"Id":3,"Mark":4,"Model":"clio","NumberOfDoors":4,"Colour":3,"ChangeBook":true}]
+[
+  {
+    "Id": 2,
+    "Mark": 0,
+    "Model": "uno",
+    "NumberOfDoors": 2,
+    "Colour": 4,
+    "ChangeBook": true
+  },
+  {"Id":3,"Mark":4,"Model":"clio","NumberOfDoors":4,"Colour":3,"ChangeBook":true}]
