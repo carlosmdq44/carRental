@@ -1,0 +1,27 @@
+[
+  {
+    "Id": 1,
+    "car": {
+      "Id": 0,
+      "Mark": 2,
+      "Model": "clasic",
+      "NumberOfDoors": 2,
+      "Colour": 0,
+      "ChangeBook": true
+    }
+    ,
+    "customer": {
+      "UltModificacion": "2021-09-13T09:36:33.8484817-03:00",
+      "DNI": 33312,
+      "Name": "Carlos",
+      "LastName": "Figueroa",
+      "NumberPhone": "2234550357",
+      "Street": "Larrea 2232",
+      "City": "Mar Del Plata",
+      "Province": "BS AS ",
+      "ZipCode": 7600
+    },
+    "dateRent": "2021-09-13T09:36:33.8497685-03:00",
+    "dateReturn": "2021-09-15T00:00:00"
+  }
+]
