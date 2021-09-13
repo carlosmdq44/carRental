@@ -16,13 +16,25 @@ namespace RentCars
             }
             public void Save()
             {
+            //agregar try catch
                 string text = JsonConvert.SerializeObject(values); //creo este tipo de string por si la clase tiene int,double,float
                 File.WriteAllText(route, text);
             }
         public void SaveList(List<T> list)
         {
-            string text = JsonConvert.SerializeObject(list); //creo este tipo de string por si la clase tiene int,double,float
-            File.WriteAllText(route, text);
+            try
+            {
+                string text = JsonConvert.SerializeObject(list); //creo este tipo de string por si la clase tiene int,double,float
+                File.WriteAllText(route, text);
+            }
+            catch (Exception ex) {
+
+                Console.WriteLine("Excepcion al guardar la lista " + ex.ToString());
+            }
+
+          
+
+            
         }
         public void Read() // Lee el archivo
             {

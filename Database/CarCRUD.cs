@@ -48,6 +48,8 @@ namespace RentCars
         // Modifica
         public static void Update(Car _car) {
 
+            // instance.of(car) ()t.id
+            //
             List<Car> listCars = new List<Car>();
             foreach (Car car in GetALL())
             {
