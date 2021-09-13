@@ -12,10 +12,10 @@ namespace RentCars
         static void Main(string[] args)
         {
             Car car1 = new Car(Mark.Chevrolet, "clasic", 2, Colour.black, true);
-            Customers customers1 = new Customers(33312, "cARLOS", "FIO", "22356456", "LARREA 2232", "MAR DEL PLATA", "BS AS ", 7600);
+            Customer customers1 = new Customer(33312, "Carlos", "Figueroa", "2234550357", "Larrea 2232", "Mar Del Plata", "BS AS ", 7600);
 
-            Rent ren1 = new Rent(1, car1, customers1, DateTime.Now, new DateTime(2021, 09, 15));
-            RentCRUD.Create(ren1);
+            Rent rent1 = new Rent(1, car1, customers1, DateTime.Now, new DateTime(2021, 09, 15));
+            RentCRUD.Create(rent1);
 
             //CarCRUD.Create(car1);
 

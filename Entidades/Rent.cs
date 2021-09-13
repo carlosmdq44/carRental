@@ -10,11 +10,11 @@ namespace RentCars.Entidades
     {
         public int Id { get; set; }
         public Car car { get; set; }
-        public Customers customer { get; set; }
+        public Customer customer { get; set; }
         public DateTime dateRent { get; set; }
         public DateTime dateReturn { get; set; }
 
-        public Rent(int Id,Car car,Customers customer,DateTime dateRent,DateTime dateReturn)
+        public Rent(int Id,Car car,Customer customer,DateTime dateRent,DateTime dateReturn)
         {
             this.Id = Id;
             this.car = car;
@@ -24,7 +24,6 @@ namespace RentCars.Entidades
         }
         public double DurationTime() {     
                 return (this.dateReturn - this.dateRent).TotalDays;
-  
         }
     }
 }

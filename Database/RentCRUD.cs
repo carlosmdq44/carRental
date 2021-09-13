@@ -11,33 +11,26 @@ namespace RentCars.Database
     public class RentCRUD
     {
         public List<Rent> rent;
-        private static string BDrent = ConfigurationManager.AppSettings[EnumBD.BDRENT];
-
+        private static string BDrent = ConfigurationManager.AppSettings[StoreConfiguration.BDRENT];
         public static Rent Create(Rent _rent)
         {
             AccessDB<Rent> bd = new AccessDB<Rent>(BDrent);
             bd.Insert(_rent);
             return _rent;
         }
-
-        //Devuelvo la lista de Customers
         public static List<Rent> GetALL()
         {
             AccessDB<Rent> bd = new AccessDB<Rent>(BDrent);
             return bd.getValues();
         }
-
         public static List<Rent> GetByDNI(Int64 DNI)
         {
             return GetALL().Where(x => x.customer.DNI == DNI).ToList();
         }
-        // Modifica
         public static void Update(Rent _rent)
-        {
-
-            // instance.of(car) ()t.id
-            //
+        {           
             List<Rent> listRent = new List<Rent>();
+
             foreach (Rent rent in GetALL())
             {
                 if (rent.Id == _rent.Id)
@@ -45,13 +38,11 @@ namespace RentCars.Database
                     rent.dateRent = _rent.dateRent;
                     rent.dateReturn = _rent.dateReturn;
                     rent.car = _rent.car;
-
                 }
                 listRent.Add(rent);
             }
             SaveList(listRent);
         }
-
         public static void Remove(int _Id)
         {
 
@@ -59,7 +50,6 @@ namespace RentCars.Database
             newList.RemoveAll(x => x.Id == _Id);
             SaveList(newList);
         }
-
         public static void SaveList(List<Rent> listRent)
         {
 

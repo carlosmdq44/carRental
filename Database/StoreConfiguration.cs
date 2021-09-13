@@ -8,7 +8,7 @@ namespace RentCars.Database
 {
     public static class StoreConfiguration
     {
-        public static string bdCars = "BDcar";
+        public static string BDCAR = "BDcar";
         public static string BDCUSTOMER = "BDcustomers";
         public static string BDRENT = "BDrent";
     }

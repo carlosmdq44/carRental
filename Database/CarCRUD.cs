@@ -11,11 +11,10 @@ namespace RentCars
     public class CarCRUD
     {
         public List<Car> cars;
-        private static string BDcar = ConfigurationManager.AppSettings["BDCar"];
-
+        private static string BDCAR = ConfigurationManager.AppSettings[BDCAR];
         public static Car Create(Car _car)
         {
-            AccessDB<Car> bd = new AccessDB<Car>(BDcar);
+            AccessDB<Car> bd = new AccessDB<Car>(BDCAR);
 
             if (GetALL().Count==0) {
                 _car.Id = 1;
@@ -27,29 +26,17 @@ namespace RentCars
             bd.Insert(_car);
             return _car;
         }
-
-        //Devuelvo la lista de Autos.
         public static List<Car> GetALL()
         {
-            AccessDB<Car> bd = new AccessDB<Car>(BDcar);
+            AccessDB<Car> bd = new AccessDB<Car>(BDCAR);
             return bd.getValues();
         }
 
-        public static Car GetById(int id) {
-
-            foreach (Car car in GetALL()) {
-                if (car.Id == id) {
-                    return car;
-                }
-            
-            }
-            return null;
+        public static Car GetById(int _id) {
+            return GetALL().Where(x => x.Id == _id).FirstOrDefault();
         }
-        // Modifica
         public static void Update(Car _car) {
 
-            // instance.of(car) ()t.id
-            //
             List<Car> listCars = new List<Car>();
             foreach (Car car in GetALL())
             {
@@ -65,7 +52,6 @@ namespace RentCars
             }
             SaveList(listCars);
         }
-        
         public static void Remove(int id) {
 
             List<Car> listCars = new List<Car>();
@@ -78,10 +64,9 @@ namespace RentCars
             }
             SaveList(listCars);
         }
-
         public static void SaveList(List<Car> listCars) {
 
-            AccessDB<Car> bd = new AccessDB<Car>(BDcar);
+            AccessDB<Car> bd = new AccessDB<Car>(BDCAR);
             bd.SaveList(listCars);
         }
     }

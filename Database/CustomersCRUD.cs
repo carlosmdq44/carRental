@@ -8,36 +8,16 @@ using System.Threading.Tasks;
 
 namespace RentCars.Database
 {
-        public class CustomersCRUD
+       public class CustomersCRUD
         {
-            public List<Customers> customers;
-            private static string BDcustomers = ConfigurationManager.AppSettings["BDCustomers"];
-
-            public static Customers Create(Customers _customers)
+            public List<Customer> customers;
+            private static string BDcustomers = ConfigurationManager.AppSettings[StoreConfiguration.BDCUSTOMER];
+            public static Customer Create(Customer _customers)
             {
-                AccessDB<Customers> bd = new AccessDB<Customers>(BDcustomers);
-                
-                //LINQ Method syntax, y usa metodo lambda.
-                Customers customer = GetALL().Where(x => x.DNI == _customers.DNI).FirstOrDefault();
+                AccessDB<Customer> bd = new AccessDB<Customer>(BDcustomers);
+                Customer customer = GetALL().Where(x => x.DNI == _customers.DNI).FirstOrDefault(); //LINQ Method syntax, y usa metodo lambda.
 
-
-
-                //LINQ Query syntax
-                //var customer2 = from x in GetALL()
-                //                where x.DNI == _customers.DNI
-                //                select x;
-
-
-                //Customers customer1;
-                //foreach (var x in GetALL()) {
-
-                //    if (x.DNI == _customers.DNI) {
-                //        customer1 = x;
-                //    }
-
-                //}
-
-                if (customer != null)
+            if (customer != null)
                 {
                     bd.Insert(_customers);
                     return _customers;
@@ -45,29 +25,20 @@ namespace RentCars.Database
                 else { 
                     return null;
                 }
-
-          
             }
-
-            //Devuelvo la lista de Customers
-            public static List<Customers> GetALL()
+            public static List<Customer> GetALL()
             {
-                AccessDB<Customers> bd = new AccessDB<Customers>(BDcustomers);
+                AccessDB<Customer> bd = new AccessDB<Customer>(BDcustomers);
                 return bd.getValues();
             }
-            
-            public static Customers GetByDNI(Int64 DNI)
+            public static Customer GetByDNI(Int64 DNI)
             {
                return GetALL().Where(x => x.DNI == DNI).FirstOrDefault();
             }
-            // Modifica
-            public static void Update(Customers _customers)
+            public static void Update(Customer _customers)
             {
-
-                // instance.of(car) ()t.id
-                //
-                List<Customers> listCustomers = new List<Customers>();
-                foreach (Customers customers in GetALL())
+                List<Customer> listCustomers = new List<Customer>();
+                foreach (Customer customers in GetALL())
                 {
                     if (_customers.DNI == customers.DNI)
                     {
@@ -79,19 +50,15 @@ namespace RentCars.Database
                 }
                 SaveList(listCustomers);
             }
-
             public static void Remove(Int64 DNI)
             {
-
-                List<Customers> newList = GetALL();                
+                List<Customer> newList = GetALL();                
                 newList.RemoveAll(x => x.DNI == DNI);
                 SaveList(newList);
             }
-
-            public static void SaveList(List<Customers> listCustomers)
+            public static void SaveList(List<Customer> listCustomers)
             {
-
-                AccessDB<Customers> bd = new AccessDB<Customers>(BDcustomers);
+                AccessDB<Customer> bd = new AccessDB<Customer>(BDcustomers);
                 bd.SaveList(listCustomers);
             }
         }

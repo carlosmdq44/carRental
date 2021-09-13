@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RentCars.Entidades
 {
-    public class Customers
+    public class Customer
     {
         // PROPIEDADES
         public Int64 DNI { get; set; }
@@ -19,11 +19,10 @@ namespace RentCars.Entidades
         public int ZipCode { get; set; }
 
         public DateTime UltModificacion;
-        public Customers()
+        public Customer()
         {
         }
-
-        public Customers(Int64 DNI,string Name,string LastName,string NumberPhone,string Street,string City,string Province,int ZipCode)
+        public Customer(Int64 DNI,string Name,string LastName,string NumberPhone,string Street,string City,string Province,int ZipCode)
         {
             this.DNI = DNI;
             this.Name = Name;

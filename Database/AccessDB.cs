@@ -31,10 +31,6 @@ namespace RentCars
 
                 Console.WriteLine("Excepcion al guardar la lista " + ex.ToString());
             }
-
-          
-
-            
         }
         public void Read() // Lee el archivo
             {
@@ -53,18 +49,18 @@ namespace RentCars
             Read();
             return values;
         }
-            public void Insert(T nuevo){
-                Read();
-                values.Add(nuevo);
-                Save();
-            }
-            public List<T> Search(Func<T, bool> criterio){
-                return values.Where(criterio).ToList();
-            }
-            public void Remove(Func<T, bool> criterio)
-            {
+        public void Insert(T nuevo){
+              Read();
+              values.Add(nuevo);
+              Save();
+        }
+        public List<T> Search(Func<T, bool> criterio){
+              return values.Where(criterio).ToList();
+        }
+        public void Remove(Func<T, bool> criterio)
+        {
                 values = values.Where(x => !criterio(x)).ToList();
-            }
+        }
         }
     }
 
